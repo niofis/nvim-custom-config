@@ -1,16 +1,7 @@
 local plugins = {
   {
     "github/copilot.vim",
-    ft = {"rust", "javascript"},
-  },
-  {
-    "williamboman/mason.nvim",
-    opts = {
-      ensure_installed = {
-        "rust-analyzer",
-        "prettier",
-      }
-    }
+    ft = { "rust", "javascript" },
   },
   {
     "neovim/nvim-lspconfig",
@@ -24,6 +15,18 @@ local plugins = {
       require "plugins.configs.lspconfig"
       require "custom.configs.lspconfig"
     end,
+  },
+  {
+    "williamboman/mason.nvim",
+    opts = {
+      ensure_installed = {
+        "lua-language-server",
+        "typescript-language-server",
+        "prettier",
+        "stylua",
+        "rust-analyzer",
+      }
+    }
   },
   {
     "rust-lang/rust.vim",
@@ -48,7 +51,7 @@ local plugins = {
   },
   {
     "saecki/crates.nvim",
-    ft = {"rust", "toml"},
+    ft = { "rust", "toml" },
     config = function(_, opts)
       local crates = require("crates")
       crates.setup(opts)
@@ -59,7 +62,7 @@ local plugins = {
     "hrsh7th/nvim-cmp",
     opts = function()
       local M = require("plugins.configs.cmp")
-      table.insert(M.sources, {name = "crates"})
+      table.insert(M.sources, { name = "crates" })
       return M
     end
   }
